@@ -18,6 +18,7 @@ from typing import (
     cast,
 )
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from .cache import (  # noqa
     CacheStorageBase,
     FileCache,
@@ -34,8 +35,8 @@ from ._types import (
     Response,
 )
 
-
-__version__ = "2.0.6"
+requests.packages.urllib3.disable_warnings()
+__version__ = "2.0.8"
 _user_agent = " ".join(("scrapelib", __version__, requests.utils.default_user_agent()))
 
 
